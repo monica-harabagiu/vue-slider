@@ -32,6 +32,23 @@ createApp({
         }
     },
     methods: {
+        nextImg(){
+            this.currentImg++
+
+            if(this.currentImg > this.slides.length - 1){
+                this.currentImg = 0
+            }
+        },
+        prevImg(){
+            this.currentImg--
+
+            if( this.currentImg < 0){
+                this.currentImg = this.slides.length - 1
+            }
+        },
+        changeImg(index){
+            this.currentImg = index
+        }
 
     }
 }).mount('#app')
