@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             currentImg: 0,
+            autoScroll: null,
             slides: [{
                 image: 'img/01.webp',
                 title: 'Marvel\'s Spiderman Miles Morale',
@@ -31,6 +32,9 @@ createApp({
             }]
         }
     },
+    created() {
+        this.activeAnimation()
+    },
     methods: {
         nextImg(){
             this.currentImg++
@@ -48,6 +52,14 @@ createApp({
         },
         changeImg(index){
             this.currentImg = index
+        },
+        activeAnimation(){
+            this.autoScroll = setInterval( () => {
+                this.nextImg()
+            }, 3000)
+        },
+        stopAnimation(){
+            clearInterval(this.autoScroll)
         }
 
     }
